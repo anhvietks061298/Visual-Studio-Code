@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class SinhVien {
+private:
+    const string hoTen;
+    const string mssv;
+    const float diemTB;
+
+public:
+    // Constructor
+    SinhVien(string hoTen, string mssv, float diemTB)
+        : hoTen(hoTen), mssv(mssv), diemTB(diemTB) {
+    }
+
+    // Getter xepLoai
+    string getXepLoai() const {
+        if (diemTB >= 8.5)
+            return "Giỏi";
+        else if (diemTB >= 7.0)
+            return "Khá";
+        else if (diemTB >= 5.0)
+            return "Trung bình";
+        else
+            return "Yếu";
+    }
+
+    // Override toString() tương đương trong C++
+    string toString() const {
+        return mssv + " – " + hoTen + " – " + to_string(diemTB)
+               + " (" + getXepLoai() + ")";
+    }
+};
+
+int main() {
+    // Tạo danh sách 2 sinh viên
+    SinhVien sv1("Họ tên thật của bạn", "MSSV thật của bạn", 8.7);
+    SinhVien sv2("Trần Thị B", "2201234568", 6.4);
+
+    // In ra
+    cout << sv1.toString() << endl;
+    cout << sv2.toString() << endl;
+
+    return 0;
+}
